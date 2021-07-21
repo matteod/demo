@@ -1,0 +1,49 @@
+hslavich_onelogin_saml:
+    # Basic settings
+    idp:
+        entityId: ' https://samltest.id/saml/idp'
+        singleSignOnService:
+            url: 'https://samltest.id/idp/profile/SAML2/Redirect/SSO'
+            binding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        singleLogoutService:
+            url: 'https://samltest.id/idp/profile/SAML2/Redirect/SLO'
+            binding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        x509cert: 'MIIDETCCAfmgAwIBAgIUZRpDhkNKl5eWtJqk0Bu1BgTTargwDQYJKoZIhvcNAQELBQAwFjEUMBIGA1UEAwwLc2FtbHRlc3QuaWQwHhcNMTgwODI0MjExNDEwWhcNMzgwODI0MjExNDEwWjAWMRQwEgYDVQQDDAtzYW1sdGVzdC5pZDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJrh9/PcDsiv3UeL8Iv9rf4WfLPxuOm9W6aCntEA8l6c1LQ1Zyrz+Xa/40ZgP29ENf3oKKbPCzDcc6zooHMji2fBmgXp6Li3fQUzu7yd+nIC2teejijVtrNLjn1WUTwmqjLtuzrKC/ePoZyIRjpoUxyEMJopAd4dJmAcCq/Kk2eYX9GYRlqvIjLFoGNgy2R4dWwAKwljyh6pdnPUgyO/WjRDrqUBRFrLQJorR2kDc4seZUbmpZZfp4MjmWMDgyGM1ZnR0XvNLtYeWAyt0KkSvFoOMjZUeVK/4xR74F8e8ToPqLmZEg9ZUx+4z2KjVK00LpdRkH9Uxhh03RQ0FabHW6UCAwEAAaNXMFUwHQYDVR0OBBYEFJDbe6uSmYQScxpVJhmt7PsCG4IeMDQGA1UdEQQtMCuCC3NhbWx0ZXN0LmlkhhxodHRwczovL3NhbWx0ZXN0LmlkL3NhbWwvaWRwMA0GCSqGSIb3DQEBCwUAA4IBAQBNcF3zkw/g51q26uxgyuy4gQwnSr01Mhvix3Dj/Gak4tc4XwvxUdLQq+jCcxr2Pie96klWhY/v/JiHDU2FJo9/VWxmc/YOk83whvNd7mWaNMUsX3xGv6AlZtCOL3JhCpHjiN+kBcMgS5jrtGgV1Lz3/1zpGxykdvS0B4sPnFOcaCwHe2B9SOCWbDANJXpTjz1DmJO4ImyWPJpN1xsYKtm67Pefxmn0ax0uE2uuzq25h0xbTkqIQgJzyoE/DPkBFK1vDkMfAW11dQ0BXatEnW7Gtkc0lh2/PIbHWj4AzxYMyBf5Gy6HSVOftwjCvoQR2qr2xJBixsg+MIORKtmKHLfU'
+    sp:
+        entityId: 'https://8000-ivory-echidna-mt28ikzz.ws-eu10.gitpod.io/saml/metadata'
+        assertionConsumerService:
+            url: 'https://8000-ivory-echidna-mt28ikzz.ws-eu10.gitpod.io/saml/acs'
+            binding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST'
+        singleLogoutService:
+            url: 'https://8000-ivory-echidna-mt28ikzz.ws-eu10.gitpod.io/saml/logout'
+            binding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        privateKey: ''    
+    # Optional settings
+    baseurl: 'https://8000-ivory-echidna-mt28ikzz.ws-eu10.gitpod.io/'
+    strict: true
+    debug: true    
+    security:
+        nameIdEncrypted:       false
+        authnRequestsSigned:   false
+        logoutRequestSigned:   false
+        logoutResponseSigned:  false
+        wantMessagesSigned:    false
+        wantAssertionsSigned:  false
+        wantNameIdEncrypted:   false
+        requestedAuthnContext: true
+        signMetadata: false
+        wantXMLValidation: true
+        signatureAlgorithm: 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'
+        digestAlgorithm: 'http://www.w3.org/2001/04/xmlenc#sha256'
+    contactPerson:
+        technical:
+            givenName: 'Tech User'
+            emailAddress: 'techuser@example.com'
+        support:
+            givenName: 'Support User'
+            emailAddress: 'supportuser@example.com'
+    organization:
+        en:
+            name: 'Example'
+            displayname: 'Example'
+            url: 'http://example.com'

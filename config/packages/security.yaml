@@ -18,6 +18,13 @@ security:
         database_users:
             entity: { class: App\Entity\User, property: username }
 
+        saml_provider:
+            # Basic provider instantiates a user with default roles
+            saml:
+                user_class: 'AppBundle\Entity\User'
+                default_roles: ['ROLE_USER']
+
+
     # https://symfony.com/doc/current/security.html#a-authentication-firewalls
     firewalls:
         dev:
@@ -50,7 +57,7 @@ security:
 
             logout:
                 # The route name the user can go to in order to logout
-                path: security_logout
+                path: saml_logout
                 # The name of the route to redirect to after logging out
                 target: homepage
 
@@ -60,12 +67,21 @@ security:
             # See https://symfony.com/doc/current/security/experimental_authenticators.html#configuring-the-authentication-entry-point
             entry_point: 'form_login'
 
+            saml:
+                username_attribute: uid
+                check_path: saml_acs
+                login_path: saml_login
+                failure_path: saml_login
+                always_use_default_target_path: true
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         # this is a catch-all for the admin area
         # additional security lives in the controllers
         - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
+        - { path: '^/(%app_locales%)/saml/login', roles: PUBLIC_ACCESS }
+        - { path: '^/(%app_locales%)/saml/metadata', roles: PUBLIC_ACCESS }
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER

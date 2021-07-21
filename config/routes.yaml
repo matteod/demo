@@ -10,3 +10,5 @@ homepage:
     defaults:
         template: default/homepage.html.twig
         _locale: '%locale%'
+hslavich_saml_sp:
+    resource: "@HslavichOneloginSamlBundle/Resources/config/routing.yml"
